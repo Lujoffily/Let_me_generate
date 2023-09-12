@@ -1,46 +1,95 @@
-// Assignment code here
+var passwordText = document.querySelector("#password");
 
-const upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const  lowerLetters = 'abcdefghijklmnopqrstuvwxyz';
-const numberSelector = '0123456789';
-const symbolSelector= '{}#,!_@/();:.|%$=+-*[]^?&~`';
 
-// Get references to the #generate element
+var upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var lowerLetters = 'abcdefghijklmnopqrstuvwxyz';
+var numberSelector = '0123456789';
+var symbolSelector = '{}#,!_@/();:.|%$=+-*[]^?&~';
+var lengthCharacter = upperLetters, lowerLetters, numberSelector, symbolSelector
+
+var userOpt = function() {
+  
+  
+}
+
+
+function generatePassword(allElement) {
+	
+  userChooseupperLetters = prompt("Would you like to include uppercase characters? Please reply with yes or no.");
+  if (userChooseupperLetters === "yes") {
+    alert("We will uppercase Characters!");
+    userChooseupperLetters = true;
+  } else if (userChooseupperLetters !== "yes") {
+    alert("We will not be adding uppercase Characters!");
+    userChooseupperLetters = false;
+  }
+  
+  userChooselowerLetters = prompt("Would you like to include lowercase characters? Please reply with yes or no.")
+  if (userChooselowerLetters === "yes") {
+    alert("We will lowercase Characters!");
+    userChooselowerLetters = true;
+  } else if (userChooselowerLetters !== "yes") {
+    alert("We will not be adding lowercase Characters!");
+    userChooselowerLetters = false;
+  }
+  
+  userChoosenumberSelector = prompt("Would you like to include number characters? Please reply with yes or no.")
+  if (userChoosenumberSelector === "yes") {
+    alert("We will numbers Characters!");
+    userChoosenumberSelector = true;
+  } else if (userChoosenumberSelector !== "yes") {
+    alert("We will not be adding number Characters!");
+    userChoosenumberSelector = false;
+}
+
+userChoosesymbolSelector = prompt("Would you like to include symbol characters? Please reply with yes or no.")
+  if (userChoosesymbolSelector === "yes") {
+    alert("We will symbol Characters!");
+    userChoosesymbolSelector = true;
+  } else if (userChoosesymbolSelector !== "yes") {
+    alert("We will not be adding symbol Characters!");
+    userChoosesymbolSelector = false;
+}
+
+userChooselengthChar = prompt("How long would you like your passwored to be? Choose from 8 to 128 characters.");
+if (userChooselengthChar < 8 || userChooselengthChar > 128) {
+  alert("It needs to be between 8 and 128!");
+  userChooselengthChar = true;
+} else if (userChooselengthChar !== "yes") {
+  alert("You have choosen " + userChooselengthChar);
+  userChooselengthChar = false;
+}
+
+}
+
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+ passwordText.value = password;
 
-  function randomLower() {
-    return lowerLetters[Math.floor(Math.random() * lowerLetters.length)];
+ function userPassword() {
+  var result = "";
+  var length = userChooselengthChar;
+  for (i = 0; i < length; i++) {
+    lengthSelector(Math.floor(Math.random() * userChooselengthChar))
   }
-  
-  function randomUpper() {
-    return upperLetters[Math.floor(Math.random() * upperLetters.length)];
-  }
-  
-  passwordText.value = password;
-
+  if (userChooseupperLetters === true) {
+upperLetters[Math.floor(Math.random() * upperLetters.lenght)];
+}
+  if (userChooselowerLetters === true) {
+lowerLetters[Math.floor(Math.random() * lowerLetters.lenght)];
+}
+  if (userChoosenumberSelector === true) {
+numberSelector[Math.floor(Math.random() * numberSelector.lenght)];
+}
+  if (userChoosesymbolSelector === true) {
+symbolSelector[Math.floor(Math.random() * symbolSelector.lenght)];
 }
 
-function generatePassword() {
-  if (userLower === true)
-  randomLower();
-  else {
-  return
-  }
+return userPassword
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+}
 
-
-//TODO:
-//1. Create prompts for password criteria
-//  a. length should be at least 8 characters and no more than 128 characters
-//2. Need to create a generatePassword();
-//  a. able to select criteria
-//  b. validate input and at leaset one character type should be selected
-//  c. generate password matching selection
-//3. Password can be displayed as a alert or written to the page
+generateBtn.addEventListener("click", writePassword); 
